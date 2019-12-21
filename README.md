@@ -1,4 +1,4 @@
-## Decisin Tree For Image Orientation
+# Decisin Tree For Image Orientation
 
 While building a decision tree, we calculate the mean of all the rows for each column. We calculate the expectation which is 4.0 for the current dataset. Since there are only 4 classes and all or of equal frequency so the probability of occurrence of each of them is equal to one quarter. So we get the resultant sum of - p * log2(p) sum for all the 4 classes is 2. For each column, we iterate through all the rows and classify each value as “>=” for being greater than the mean value and “<” for being less than the mean. Then we get entropy for “>=” for all the 4 classes( 0,90,180,270 ) using the count of each class divided by the total number of counts for all the 4 classes as its probability and then applying summation of - p * log2(p) for all the 4 classes. Similarly, we calculate the entropy for the “<” class. After calculating the entropy for the “>=” and “<” we use expectation - Entropy for “>=” and the “<” separately to calculate the information gain for each of the classes. Then we sum up the information gain for both the classes to get the resultant information gain. The column with maximum information gain is chosen. At each step, we append a tuple to ( depth, column index, the mean value of the column ). After that, we split the training array into 2 parts based on the fact whether its column value at that particular index is “>=” or “<” and split its respective labels( angles ) respectively. So, on training these two sets of training arrays and labels separately calculate recursion. After which the two arrays are merged back in order to get the old resultant array if needed.
 
@@ -12,15 +12,15 @@ After generating labels for all the rows, we compare the number of matching labe
 
 The maximum accuracy achieved using Decision Tree on the current testing data using the training data is 60%.
 
-# How to run the code?
+## How to run the code?
 
 Training : Run the orient.py file from the console with following command line parameters, 
 
-# orient.py train train-data.txt model.txt tree
+### orient.py train train-data.txt model.txt tree
 
 Testing : Run the orient.py file from the console with following command line parameters, 
 
-# orient.py test test-data.txt model.txt tree
+### orient.py test test-data.txt model.txt tree
 
 
 
